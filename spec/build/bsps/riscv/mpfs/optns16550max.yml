@@ -1,0 +1,16 @@
+SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+actions:
+- get-integer: null
+- define: null
+build-type: option
+copyrights:
+- Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+default: 1
+default-by-variant: []
+description: |
+  maximum number of NS16550 devices supported by the console driver (1 by default)
+enabled-by: true
+format: '{}'
+links: []
+name: RISCV_CONSOLE_MAX_NS16550_DEVICES
+type: build

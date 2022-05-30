@@ -12,6 +12,7 @@ default-by-variant:
   - '64'
   variants:
   - riscv/rv64.*
+  - riscv/mpfs  
 - value:
   - '32'
   variants:

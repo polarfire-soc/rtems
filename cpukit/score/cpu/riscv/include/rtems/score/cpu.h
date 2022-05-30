@@ -488,8 +488,11 @@ static inline uint32_t _CPU_SMP_Get_current_processor( void )
     ".option pop" :
     "=&r" ( mhartid )
   );
-
+#ifdef RISCV_ENABLE_MPFS_SUPPORT
+  return (uint32_t) mhartid - 1;
+#else
   return (uint32_t) mhartid;
+#endif
 }
 
 void _CPU_SMP_Send_interrupt( uint32_t target_processor_index );
