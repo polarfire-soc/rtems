@@ -8,9 +8,9 @@ actions:
 build-type: option
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
-default: 68719476736
+default: 68753031168
 default-by-variant:
-- value: 68719476736
+- value: 68753031168
   variants:
   - riscv/mpfsicicle
 description: ''

@@ -209,6 +209,9 @@ static void riscv_plic_init(const void *fdt)
     cpu = _Per_CPU_Get_by_index(hart_index - 1);
     cpu->cpu_per_cpu.plic_hart_regs = &plic->harts[i / 8];
     cpu->cpu_per_cpu.plic_m_ie = &plic->enable[i / 8][0];
+    for (interrupt_index = 0; interrupt_index < 6; ++interrupt_index) {
+        cpu->cpu_per_cpu.plic_m_ie[interrupt_index] = 0;
+    }
 #else
     uint32_t hartid;
 
@@ -227,6 +230,9 @@ static void riscv_plic_init(const void *fdt)
     cpu = _Per_CPU_Get_by_index(0);
     cpu->cpu_per_cpu.plic_hart_regs = &plic->harts[i / 8];
     cpu->cpu_per_cpu.plic_m_ie = &plic->enable[i / 8][0];
+    for (interrupt_index = 0; interrupt_index < 6; ++interrupt_index) {
+        cpu->cpu_per_cpu.plic_m_ie[interrupt_index] = 0;
+    }
 #endif
   }
 

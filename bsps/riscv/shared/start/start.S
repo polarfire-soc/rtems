@@ -49,16 +49,20 @@ SYM(_start):
 	LADDR	gp, __global_pointer$
 	.option	pop
 
+#ifdef RISCV_ENABLE_MPFS_SUPPORT
+    /* loop if e51 */
+    csrr a0, mhartid
+    bnez a0, .skip_u54
+
     /* Set exception handler */
     LADDR   t0, _RISCV_Exception_handler
     csrw    mtvec, t0
 
-# loop if e51
-    csrr a0, mhartid
-    bnez a0, .no_float
 .loop_here:
     LADDR   sp, _ISR_Stack_area_begin
     LADDR   t2, _ISR_Stack_size
+    addi    t0, a0, 5
+    mul t2, t2, t0
     add sp, sp, t2
     csrw mstatus, zero
     csrw mie, zero
@@ -66,16 +70,23 @@ SYM(_start):
     wfi
     j .loop_here
 
- .no_float:
+ .skip_u54:
     csrw mstatus, zero
     csrw mie, zero
     csrw mip, zero
+#endif
+
     /* Init FPU */
 #ifdef __riscv_flen
 	li	t0, MSTATUS_FS
 	csrs	mstatus, t0
 	csrw	fcsr, zero
 #endif
+
+    /* Set exception handler */
+    LADDR   t0, _RISCV_Exception_handler
+    csrw    mtvec, t0
+
 	/* Load stack pointer and branch to secondary processor start if necessary */
 #ifdef RTEMS_SMP
 	LADDR	sp, _ISR_Stack_area_begin

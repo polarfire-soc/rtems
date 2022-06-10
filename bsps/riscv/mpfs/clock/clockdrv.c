@@ -93,7 +93,7 @@ static void riscv_clock_at_tick(riscv_timecounter *tc)
 {
   volatile RISCV_CLINT_regs *clint;
   uint64_t value;
-  uint32_t cpu = read_csr(mhartid); //rtems_scheduler_get_processor() + 1;
+  uint32_t cpu = read_csr(mhartid);
 
   clint = tc->clint;
 
