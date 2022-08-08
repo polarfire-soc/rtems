@@ -12,7 +12,7 @@ default: 268435456
 default-by-variant:
 - value: 268435456
   variants:
-  - riscv/mpfsicicle
+  - riscv/mpfs64.*
 description: ''
 enabled-by: true
 format: '{:#010x}'

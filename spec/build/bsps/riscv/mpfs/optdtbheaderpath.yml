@@ -5,7 +5,7 @@ actions:
 build-type: option
 copyrights:
 - Copyright (C) 2022 On-Line Applications Research Corporation (OAR)
-default: bsp/mpfs_icicle_dtb.h
+default: bsp/mpfs_dtb.h
 default-by-variant: []
 description: |
   the path to the header file containing the device tree binary. See the BSP

@@ -31,7 +31,7 @@ enabled-by:
 - riscv/griscv
 - riscv/grv32imac
 - riscv/grv32imafdc
-- riscv/mpfsicicle
+- riscv/mpfs64imafdc
 - riscv/rv32iac
 - riscv/rv32imac
 - riscv/rv32imafc

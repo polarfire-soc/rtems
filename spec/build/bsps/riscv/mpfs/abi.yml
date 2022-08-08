@@ -15,7 +15,7 @@ default-by-variant:
   - -mabi=lp64d
   - -mcmodel=medany
   variants:
-  - riscv/mpfsicicle
+  - riscv/mpfs64imafdc
 description: |
   ABI flags
 enabled-by: true
